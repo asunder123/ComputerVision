@@ -1,0 +1,47 @@
+{
+	"name": "cvsteadystate",
+	"title": "Moving a file from under our feet is forgivable",
+	"description": "Tests a OpenCV python application",
+	"contributions": {
+		"reliability": "high",
+		"availability": "high"
+	},
+               "controls":[    {
+        "type": "probe",
+	"name": "tracing",
+        "scope": "after",
+        "automatic": false,
+        "provider": {
+            "type": "python",
+            "module": "chaostracing.control"
+        }
+    }],
+
+	"steady-state-hypothesis": {
+		"title": "CV steady state",
+		"probes": [
+                          {
+                        "name": "cvsteadystate",
+                        "type": "probe",
+                        "tolerance": 23,
+			"module": "python",
+			"provider": {
+                                "type": "python",
+                                "module": "imagecv",
+                                "func": "steadystate",
+				"arguments":{
+                                         
+					"i": 23
+				}
+
+
+                        }
+                }]
+	},
+
+	"method": [
+		{
+			"ref": "cvsteadystate"
+		}
+	]
+}
